@@ -3,6 +3,7 @@ package DAOApi;
 public class Character {
 	public String name;
 	public String classP;
+	public String AscendancyClass;
 	public int playTime;
 	public int level;
 	
@@ -17,5 +18,6 @@ public class Character {
 		this.classP="None";
 		this.playTime=0;
 		this.level=0;
+		this.AscendancyClass=" ";
 	}
 }
