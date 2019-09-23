@@ -3,21 +3,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DAOApi.Character;
+import DAOApi.Ascendancy;
 import DAOApi.CharTable;
+import DAOApi.AsceTable;
 
 
 public class Table {
 	public static List<Character> list = new ArrayList<Character>();
+	public static List<Ascendancy> listA = new ArrayList<Ascendancy>();
 	
 	public static void main(String[] args) throws Exception{
 		CharTable table = new CharTable();
+		AsceTable Atable = new AsceTable();
+		
 		createArr();
+		
 		table.connect();
-		//table.create();
-		//table.insertChar(list);
-		List<Character> listRes = table.showClass("Witch");
+		table.create();
+		table.insertChar(list);
+		
+		Atable.connect();
+		Atable.create();
+		Atable.insertChar(listA);
+		
+		List<Character> listRes = table.showTable();
 		for(Character t : listRes){
-			System.out.println(t.name+" "+t.playTime+"h "+t.level+"lvl "+t.classP);
+			System.out.println(t.name+" "+t.playTime+"h "+t.level+"lvl "+t.classP+" "+t.AscendancyClass);
 		}
 	}
 	
@@ -64,5 +75,47 @@ public class Table {
 		list.add(e18);
 		list.add(e19);
 		list.add(e20);
+		
+		Ascendancy a1 = new Ascendancy("Teon", "Slayer");
+		Ascendancy a2 = new Ascendancy("Ferune", "Occultist");
+		Ascendancy a3 = new Ascendancy("Fineme", "Necromancer");
+		Ascendancy a4 = new Ascendancy("Dan", "Ascendant");
+		Ascendancy a5 = new Ascendancy("Gamart", "Occultist");
+		Ascendancy a6 = new Ascendancy("Zarol", "Guardian");
+		Ascendancy a7 = new Ascendancy("Anig", "Deadeye");
+		Ascendancy a8 = new Ascendancy("Thiale", "Juggernaut");
+		Ascendancy a9 = new Ascendancy("Ralis", "Elementalist");
+		Ascendancy a10 = new Ascendancy("Nizan", "Ascendant");
+		Ascendancy a11 = new Ascendancy("Prinl", "Pathfinder");
+		Ascendancy a12 = new Ascendancy("Onnedebri", "Pathfinder");
+		Ascendancy a13 = new Ascendancy("Xunth", "Guardian");
+		Ascendancy a14 = new Ascendancy("Veraro", "Saboteur");
+		Ascendancy a15 = new Ascendancy("Wagonncrw", "Occultist");
+		Ascendancy a16 = new Ascendancy("Zedieytia", "Champion");
+		Ascendancy a17 = new Ascendancy("Iar", "Inquisitor");
+		Ascendancy a18 = new Ascendancy("TerYrkahai", "Elementalist");
+		Ascendancy a19 = new Ascendancy("Var", "Slayer");
+		Ascendancy a20 = new Ascendancy("Maloruig", "Saboteur");
+		
+		listA.add(a1);
+		listA.add(a2);
+		listA.add(a3);
+		listA.add(a4);
+		listA.add(a5);
+		listA.add(a6);
+		listA.add(a7);
+		listA.add(a8);
+		listA.add(a9);
+		listA.add(a10);
+		listA.add(a11);
+		listA.add(a12);
+		listA.add(a13);
+		listA.add(a14);
+		listA.add(a15);
+		listA.add(a16);
+		listA.add(a17);
+		listA.add(a18);
+		listA.add(a19);
+		listA.add(a20);
 	}
 }
