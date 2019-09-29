@@ -1,15 +1,17 @@
 package DAOApi;
 
-public class Ascendancy{
-	public String name;
-	public String AscendancyClass;
-	
-	public Ascendancy(String nameC, String AscendancyClassC){
-		this.name=nameC;
-		this.AscendancyClass=AscendancyClassC;
-	}
-	public Ascendancy(){
-		this.name="Def";
-		this.AscendancyClass="Def";
-	}
+public class Ascendancy
+{
+    public String name;
+    public String ascendancyClass;
+    
+    public Ascendancy(final String nameC, final String AscendancyClassC) {
+        this.name = nameC;
+        this.ascendancyClass = AscendancyClassC;
+    }
+    
+    public Ascendancy() {
+        this.name = "Def";
+        this.ascendancyClass = "Def";
+    }
 }
