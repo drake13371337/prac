@@ -4,18 +4,22 @@ import java.util.*;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 public class AsceTable
 {
-    private static ConnectionSource con;
-    private Dao<Ascendancy, String> asceDao;
+    private JdbcConnectionSource con;
+    private Dao<Ascendancy, Integer> asceDao;
     
-    public AsceTable() {
+    public Dao<Ascendancy, Integer> getAsceDao() {
+		return asceDao;
+	}
+
+	public AsceTable() {
     }
     
-    public AsceTable(final ConnectionSource conC) throws Exception {
-        AsceTable.con = conC;
+    public AsceTable(final JdbcConnectionSource conC) throws Exception {
+        con = conC;
         asceDao = DaoManager.createDao(con, Ascendancy.class);
     }
     
