@@ -5,12 +5,11 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Character")
 public class Character{
-	public static final String NAME_FIELD_NAME = "name";
 	public static final String CLASS_FIELD_NAME = "class";
 	public static final String PTIME_FIELD_NAME = "playTime";
 	public static final String LEVEL_FIELD_NAME = "level";
 	
-	@DatabaseField(columnName = NAME_FIELD_NAME)
+	@DatabaseField(generatedId = true)
     public String name;
 	@DatabaseField(columnName = CLASS_FIELD_NAME)
     public String classP;

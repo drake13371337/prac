@@ -1,7 +1,5 @@
 package DAOApi;
 
-import java.sql.*;
-
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -13,10 +11,13 @@ public class CharDB
     public AsceTable tableA;
     
     public void connect() throws Exception {
-        Class.forName("org.h2.Driver").newInstance();
-        con = new JdbcConnectionSource("jdbc:h2:file:./Character.db");
+        con = new JdbcConnectionSource("jdbc:h2:mem:Character");
         this.table = new CharTable(CharDB.con);
         this.tableA = new AsceTable(CharDB.con);
+    }
+    
+    public void disconnect() throws Exception {
+    	con.close();
     }
     
     public void create() throws Exception {
