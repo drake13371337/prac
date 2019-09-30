@@ -1,7 +1,8 @@
-package Base;
+package Application;
 
 import java.util.*;
 import DAOApi.*;
+import DAOApi.Ascendancy;
 import DAOApi.Character;
 
 public class App
@@ -9,7 +10,12 @@ public class App
     public static void main(final String[] args) throws Exception {
         final CharDB DataBase = new CharDB();
         DataBase.connect();
-        final List<Character> listRes = DataBase.table.getTableAscendancyClass("Occultist");
+        DataBase.create();
+        
+        DataBase.table.insertChar(create1());
+        DataBase.tableA.insertChar(create2());
+        
+        final List<Character> listRes = DataBase.table.getTable();
         for (final Character t : listRes) {
             System.out.println(String.valueOf(t.name) + " " + t.playTime + "h " + t.level + "lvl " + t.classP + " " + t.ascendancyClass);
         }
