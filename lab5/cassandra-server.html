@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+     table {
+      border: 2px;
+      border-spacing: 10px 8px;
+     }
+   </style>
+
+    <title>AJAX+JS+Cassandra</title>
+
+    <script type="text/javascript">
+      function readServerElem(url, input, callback){
+        var req = new XMLHttpRequest();
+        var input_json = JSON.stringify(input);
+        req.onreadystatechange = function(){
+          if(req.readyState === 4){
+            if(req.status === 200){
+              callback(undefined, req.responseText);
+            }else{
+              callback(new Error(req.status));
+            }
+          }
+        };
+        req.open("POST", url, true);
+        req.setRequestHeader("Content-type", "application/json");
+        req.send(input_json);
+      }
+
+      function search_elem(){
+        var input = [];
+        input[0] = document.getElementById("inp").value;
+        input[1] = document.getElementById("mode").value;
+
+        readServerElem("/search", input, function(err, data){
+          var html_res="<table><tr><th>Nickname</th><th>Class</th><th>Play Time</th><th>Level</th></tr><tbody>";
+          var table1 = JSON.parse(data);
+          if(table1===1){
+            console.log("Err");
+          }else{
+            for(var i=0; i<table1.length; i++){
+              html_res += '<tr><td>' + table1[i].name + "</td><td>" + table1[i].class + "</td><td>"+ table1[i].playtime + "</td><td>" + table1[i].level + "</td></tr>\n";
+            }
+            html_res+="</tbody></table>";
+            document.getElementById("restable").innerHTML = html_res;
+          }
+        });
+      }
+    </script>
+
+    </head>
+  <body>
+    <input type="text" id="inp" oninput="search_elem()"></input>
+    <input type="text" id="mode" oninput="search_elem()"></input>
+    <p>
+      <span id="restable" style="font-style: italic"></span>
+    </p>
+
+  </body>
+</html>
